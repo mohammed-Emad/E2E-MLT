@@ -1,4 +1,4 @@
-CXXFLAGS = -I include  -std=c++11 -O3 $(shell python3.7-config --cflags)
+CXXFLAGS = -I include  -std=c++11 -O3 $(shell python3-config --cflags)
 LDFLAGS = $(shell python3.7-config --ldflags)
 
 DEPS = nms.h $(shell find include -xtype f)
