@@ -202,7 +202,7 @@ def process_boxes(images, im_data, iou_pred, roi_pred, angle_pred, score_maps, g
       th23 =  (2 * center[1] - input_H - 1) / (input_H - 1) #* torch.cos(angle_var) + (2 * xc - input_W - 1) / (input_W - 1) * torch.sin(angle_var)
       
       
-      t = np.asarray([th11, th12, th13, th21, th22, th23], dtype=np.float)
+      t = np.asarray([th11, th12, th13, th21, th22, th23], dtype=float)
       t = torch.from_numpy(t).type(torch.FloatTensor).cuda()
       
       #t = torch.stack((th11, th12, th13, th21, th22, th23), dim=1)
@@ -225,7 +225,7 @@ def process_boxes(images, im_data, iou_pred, roi_pred, angle_pred, score_maps, g
       th23 =  (2 * center[1] - input_H - 1) / (input_H - 1) #* torch.cos(angle_var) + (2 * xc - input_W - 1) / (input_W - 1) * torch.sin(angle_var)
 
 
-      t = np.asarray([th11, th12, th13, th21, th22, th23], dtype=np.float)
+      t = np.asarray([th11, th12, th13, th21, th22, th23], dtype=float)
       t = torch.from_numpy(t).type(torch.FloatTensor)
       t = t.cuda()
       theta = t.view(-1, 2, 3)
@@ -354,7 +354,7 @@ def process_boxes(images, im_data, iou_pred, roi_pred, angle_pred, score_maps, g
       th23 =  (2 * yc - input_H - 1) / (input_H - 1) #* torch.cos(angle_var) + (2 * xc - input_W - 1) / (input_W - 1) * torch.sin(angle_var)
         
       
-      t = np.asarray([th11, th12, th13, th21, th22, th23], dtype=np.float)
+      t = np.asarray([th11, th12, th13, th21, th22, th23], dtype=float)
       t = torch.from_numpy(t).type(torch.FloatTensor)
       t = t.cuda()
       theta = t.view(-1, 2, 3)

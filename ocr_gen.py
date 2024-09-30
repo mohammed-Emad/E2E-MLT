@@ -191,7 +191,7 @@ def generator(batch_size=4, train_list='/home/klara/klara/home/DeepSemanticText/
         bucket_label_len[bestb].append(len(gt_labels))
         
         if len(bucket_images[bestb]) == batch_sizes[bestb]:
-          images = np.asarray(bucket_images[bestb], dtype=np.float)
+          images = np.asarray(bucket_images[bestb], dtype=float)
           images /= 128
           images -= 1
 

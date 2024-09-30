@@ -46,7 +46,7 @@ def load_annoataion(p, im):
   text_tags = []
   labels = []
   if not os.path.exists(p):
-    return np.array(text_polys, dtype=np.float), np.array(text_tags, dtype=np.bool), labels
+    return np.array(text_polys, dtype=float), np.array(text_tags, dtype=np.bool), labels
 
   norm = math.sqrt(im.shape[0] * im.shape[0] + im.shape[1] * im.shape[1])
   with open(p, 'r') as f:
@@ -79,7 +79,7 @@ def load_annoataion(p, im):
       else:
           text_tags.append(False)
 
-    return np.array(text_polys, dtype=np.float), np.array(text_tags, dtype=np.bool), labels
+    return np.array(text_polys, dtype=float), np.array(text_tags, dtype=np.bool), labels
 
 
 
@@ -93,7 +93,7 @@ def load_gt_annoataion(p, is_icdar):
   text_tags = []
   labels = []
   if not os.path.exists(p):
-    return np.array(text_polys, dtype=np.float), np.array(text_tags, dtype=np.bool), labels
+    return np.array(text_polys, dtype=float), np.array(text_tags, dtype=np.bool), labels
 
   delim = ','
   with open(p, 'r') as f:
@@ -131,7 +131,7 @@ def load_gt_annoataion(p, is_icdar):
       else:
           text_tags.append(False)
 
-    return np.array(text_polys, dtype=np.float), np.array(text_tags, dtype=np.bool), labels
+    return np.array(text_polys, dtype=float), np.array(text_tags, dtype=np.bool), labels
 
 def draw_box_points(img, points, color = (0, 255, 0), thickness = 1):
   try:
@@ -725,13 +725,13 @@ def generator(input_size=512, batch_size=4, train_list='/home/klara/klara/home/D
 
 
         if len(images) == batch_size:
-          images = np.asarray(images, dtype=np.float)
+          images = np.asarray(images, dtype=float)
           images /= 128
           images -= 1
 
           training_masks = np.asarray(training_masks, dtype=np.uint8)
           score_maps = np.asarray(score_maps, dtype=np.uint8)
-          geo_maps = np.asarray(geo_maps, dtype=np.float)
+          geo_maps = np.asarray(geo_maps, dtype=float)
           gt_idxs = np.asarray(gt_idxs, dtype=np.int)
 
           yield images, image_fns, score_maps, geo_maps, training_masks, gtso, lbso, gt_idxs

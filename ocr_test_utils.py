@@ -123,7 +123,7 @@ def test(net, codec, args,  list_file = '/home/busta/data/icdar_ch8_validation/o
     #scaled = scaled[:, :, ::-1]
     scaled = np.expand_dims(scaled, axis=0)
     
-    scaled = np.asarray(scaled, dtype=np.float)
+    scaled = np.asarray(scaled, dtype=float)
     scaled /= 128
     scaled -= 1
     

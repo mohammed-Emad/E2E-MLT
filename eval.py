@@ -67,7 +67,7 @@ def load_detections(p):
 			# cls = 0 
 			text_polys.append([x1, y1, x2, y2, x3, y3, x4, y4, conf])
 		 
-		return np.array(text_polys, dtype=np.float)
+		return np.array(text_polys, dtype=float)
 
 	
 def load_gt(p, is_icdar=False):
@@ -103,7 +103,7 @@ def load_gt(p, is_icdar=False):
 			
 			text_gts.append(text_line) 
 		
-		return np.array(text_polys, dtype=np.float), text_gts
+		return np.array(text_polys, dtype=float), text_gts
 
 
 def draw_detections(img, boxes, color=(255, 0, 0)):
@@ -457,7 +457,7 @@ if __name__ == '__main__':
 			
 			im_resized, (ratio_h, ratio_w) = resize_image(img, max_size=1848 * 1024, scale_up=True)	# 1348*1024 #1848*1024
 			# im_resized = im_resized[:, :, ::-1]
-			images = np.asarray([im_resized], dtype=np.float)
+			images = np.asarray([im_resized], dtype=float)
 			images /= 128
 			images -= 1
 			im_data = net_utils.np_to_variable(images, is_cuda=args.cuda).permute(0, 3, 1, 2)
@@ -593,7 +593,7 @@ if __name__ == '__main__':
 				th22 = scaley * math.cos(angle)	
 				th23 = (2 * yc - input_H - 1) / (input_H - 1)
 									
-				t = np.asarray([th11, th12, th13, th21, th22, th23], dtype=np.float)
+				t = np.asarray([th11, th12, th13, th21, th22, th23], dtype=float)
 				t = torch.from_numpy(t).type(torch.FloatTensor)
 				t = t.cuda()
 				theta = t.view(-1, 2, 3)
@@ -613,7 +613,7 @@ if __name__ == '__main__':
 				th22 = scaley * math.cos(angle)
 				th23 = (2 * yc - input_H - 1) / (input_H - 1)	# * torch.cos(angle_var) + (2 * xc - input_W - 1) / (input_W - 1) * torch.sin(angle_var)
 	
-				t = np.asarray([th11, th12, th13, th21, th22, th23], dtype=np.float)
+				t = np.asarray([th11, th12, th13, th21, th22, th23], dtype=float)
 				t = torch.from_numpy(t).type(torch.FloatTensor)
 				t = t.cuda()
 				theta = t.view(-1, 2, 3)

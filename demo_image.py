@@ -76,7 +76,7 @@ if __name__ == '__main__':
 
       if im is not None:
         im_resized, (ratio_h, ratio_w) = resize_image(im, scale_up=False)
-        images = np.asarray([im_resized], dtype=np.float)
+        images = np.asarray([im_resized], dtype=float)
         images /= 128
         images -= 1
         im_data = net_utils.np_to_variable(images, is_cuda=args.cuda).permute(0, 3, 1, 2)
